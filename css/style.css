@@ -1,0 +1,84 @@
+* {
+    font-family: 'Space Mono', monospace;
+    }
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    border: 2px solid #333333;  
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    margin: auto;
+    grid-template-rows: repeat(6,1fr);
+    grid-template-columns: repeat(6,1fr);
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+}
+
+@media only screen and (orientation: portrait) {
+    .grid {
+        width: 90vw;
+        height: 90vw;   
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .grid {
+        width: 90vh;
+        height: 90vh;   
+    }
+}
+
+.letterForm {
+    background-color: #EEEEEE;
+    text-align: center;
+    font-size: 1rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.letterForm--phraseOne {
+    color: #999999;
+}
+
+.letterForm--phraseOne--final {
+    color: #fff;
+    background-color: #999999;
+}
+
+.letterForm--phraseTwo {
+    color: #666666;
+}
+
+.letterForm--phraseTwo--final {
+    color: #fff;
+    background-color: #666666;
+}
+
+
+.letterForm--phraseThree {
+    color: #333333;
+}
+
+.letterForm--phraseThree--final {
+    color: #fff;
+    background-color:  #333333;    
+}
+
+
+
