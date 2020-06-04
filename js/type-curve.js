@@ -1,30 +1,20 @@
-//Set interpolator variables and default vaules for the big and small screen sizes
-let smallScreen = 320;
-let bigScreen = 1500;
-let smallFont, bigFont;
+//Set default vaules for the big and small screen sizes, and big and small font sizes
+const landscape = {
+    smallScreen: 500,
+    bigScreen: 1500,
+    smallFont: 16,  
+    bigFont: 75
+};
+
+const portrait = {
+    smallScreen: 320,
+    bigScreen: 1100,
+    smallFont: 16,  
+    bigFont: 112
+};
+
 //Create nodelist of HTML elements with class of .letterForm
 const letterForms = document.querySelectorAll('.letterForm');
-
-//This is the font size change function used alongside the interpolator function
-function changeFontSize(){
-    //Set fontScaler values based on screen orientation
-    let screenOrientation = window.screen.orientation.type;
-    let fontScaler;
-    if(screenOrientation === 'landscape-primary') {
-        fontScaler = makeInterpolator(500, 1500, 16, 55);
-    } else {
-        fontScaler = makeInterpolator(320, 1100, 16, 112);
-    }
-    //Get screen width and assign as fontScaler parameter
-    let currentScreen = window.innerWidth;
-    let x = fontScaler(currentScreen);
-
-    //Loop through HTML elements with class of letterForm and assign inline font size styling
-    let i;
-    for(i = 0; i < letterForms.length; i++){
-        letterForms[i].style.fontSize = x+"px";
-    }
-}
 
 //Event listeners triggering the font size change function on load and on window resize
 window.addEventListener('load', function(event) {
@@ -35,11 +25,30 @@ window.addEventListener('resize', function(event) {
     changeFontSize();
 });
 
+//This is the font size change function used alongside the interpolator function
+function changeFontSize(){
+    //Container grid
+    const theGrid = document.querySelector('#theGrid');
+    //Set fontScaler values based on screen orientation
+    let screenOrientation = window.screen.orientation.type;
+    let fontScaler;
+    if(screenOrientation === 'landscape-primary') {
+        fontScaler = makeInterpolator(landscape.smallScreen, landscape.bigScreen, landscape.smallFont, landscape.bigFont);
+    } else {
+        fontScaler = makeInterpolator(portrait.smallScreen, portrait.bigScreen, portrait.smallFont, portrait.bigFont);
+    }
+    //Get screen width and assign as fontScaler parameter
+    let currentScreen = window.innerWidth;
+    let x = fontScaler(currentScreen);
+    //Update font size of wrapping div with id of theGrid (and its children)
+    theGrid.style.fontSize = `${x.toPrecision(3)}px`;
+}
+
+
 //Interpolator function returning floating point : START
 function makeInterpolator(smallScreen, bigScreen, smallFont, bigFont) {
 
-    return function interpFont(t) {
-
+    return t => {
         if (t <= smallScreen) {
             return smallFont;
         };
@@ -62,10 +71,9 @@ function makeInterpolator(smallScreen, bigScreen, smallFont, bigFont) {
         //
         let ft = smallFont + ((bigFont - smallFont) * s);
 
-        return ft.toPrecision(3);
-
-    };
+        return ft;
+    }
+    
 }
 //Interpolator function returning floating point : END
-
 
