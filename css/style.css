@@ -3,53 +3,53 @@
     }
 
 .container {
-    width: 100vw;
-    height: 100vh;
+    align-items: center;
     background: black;
     border: 2px solid #333333;  
     box-sizing: border-box;
     display: flex;
-    align-items: center;
+    height: 100vh;
     justify-content: center;
+    width: 100vw;
 }
 
 .grid {
-    display: grid;
-    margin: auto;
-    grid-template-rows: repeat(6,1fr);
-    grid-template-columns: repeat(6,1fr);
-    grid-gap: 20px;
-    justify-content: center;
     align-items: center;
     background-color: #fff;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(6,1fr);
+    justify-content: center;
+    margin: auto;
     padding: 10px;
 }
 
 @media only screen and (orientation: portrait) {
     .grid {
-        width: 90vw;
         height: 90vw;   
+        width: 90vw;
     }
 }
 
 @media only screen and (orientation: landscape) {
     .grid {
-        width: 90vh;
         height: 90vh;   
+        width: 90vh;
     }
 }
 
 .letterForm {
-    background-color: #EEEEEE;
-    text-align: center;
-    font-size: 1rem;
-    height: 100%;
-    width: 100%;
-    display: flex;
     align-items: center;
+    background-color: #EEEEEE;
+    display: flex;
+/*    font-size: 1rem;*/
+    height: 100%;
     justify-content: center;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .letterForm--phraseOne {
@@ -57,8 +57,8 @@
 }
 
 .letterForm--phraseOne--final {
-    color: #fff;
     background-color: #999999;
+    color: #fff;
 }
 
 .letterForm--phraseTwo {
@@ -66,8 +66,8 @@
 }
 
 .letterForm--phraseTwo--final {
-    color: #fff;
     background-color: #666666;
+    color: #fff;
 }
 
 
@@ -76,9 +76,6 @@
 }
 
 .letterForm--phraseThree--final {
-    color: #fff;
     background-color:  #333333;    
+    color: #fff;
 }
-
-
-
